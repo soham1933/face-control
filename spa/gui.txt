@@ -1,0 +1,23 @@
+import subprocess
+import tkinter as tk
+from tkinter import messagebox
+
+# Define a function to run navigation.py
+def run_navigation_script():
+    try:
+        # Run navigation.py as a separate process
+        subprocess.Popen(["python", "c.py"])
+        messagebox.showinfo("Info", "Navigation script is running. Close the window to stop.")
+    except Exception as e:
+        messagebox.showerror("Error", f"Failed to start the navigation script: {e}")
+
+# Set up the GUI
+root = tk.Tk()
+root.title("Nose Controlled Mouse Navigation")
+
+# Create a button to start navigation.py
+start_button = tk.Button(root, text="Start Nose-Controlled Navigation", command=run_navigation_script, font=("Arial", 16))
+start_button.pack(pady=20)
+
+# Start the GUI main loop
+root.mainloop()
